@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+  discovery-service:
+    build: ./discovery-service
+    ports:
+      - "8761:8761"
+    networks:
+      - b2w-cloud
+
+  gateway:
+    build: ./gateway
+    depends_on:
+      discovery-service:
+        condition: service_started
+    ports:
+      - "8080:8080"
+    environment:
+      - discovery-service-host=host.docker.internal
+    networks:
+      - b2w-cloud
+
+  b2w-converter:
+    build: ./b2w-converter
+    depends_on:
+      gateway:
+        condition: service_started
+    ports:
+      - "8088:8088"
+    environment:
+      - discovery-service-host=host.docker.internal
+    networks:
+      - b2w-cloud
+
+networks:
+  b2w-cloud:
+    driver: bridge 
+          

@@ -12,8 +12,6 @@ spring:
             - Path=/convert/**
 eureka:
   client:
-    fetchRegistry: true
-    registerWithEureka: true
     serviceUrl:
       defaultZone: http://${discovery-service-host:localhost}:8761/eureka
 

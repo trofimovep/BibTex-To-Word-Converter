@@ -2,8 +2,10 @@ HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+!**/src/main/**/build/libs/*-plan.jar
+!**/src/main/**/build/classes
+!**/src/main/**/build/kotlin
+!**/src/main/**/build/tmp
 
 ### STS ###
 .apt_generated

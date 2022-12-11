@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: b2w-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: converter
+          uri: lb://b2w-converter
+          predicates:
+            - Path=/convert/**
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${discovery-service-host:localhost}:8761/eureka
+
+

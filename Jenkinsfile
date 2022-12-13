@@ -4,7 +4,7 @@ pipeline {
         stage('Stage: Build') {
             steps {
                 echo 'Starting Building application'
-                sh "gradle -b b2w-converter"
+                sh "./b2w-converter/gradlew -p b2w-converter clean build"
             }
         }
         stage('Stage: Stopping docker containers') {

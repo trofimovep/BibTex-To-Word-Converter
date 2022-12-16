@@ -12,14 +12,14 @@ pipeline {
             agent any
             steps {
                 echo 'Stopping application...'
-                sh "docker-compose down"
+                sh "docker compose down"
             }
         }
         stage('Stage: Starting containers') {
             agent any
             steps {
                 echo 'Starting application...'
-                sh "docker-compose up"
+                sh "docker compose up"
             }
         }
     }

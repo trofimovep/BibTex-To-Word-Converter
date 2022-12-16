@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM openjdk:11-jre-slim-buster
 EXPOSE 8085
 ADD /build/libs/gateway-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar", "-Dserver.port=8085", "app.jar"]

@@ -19,7 +19,7 @@ pipeline {
             agent any
             steps {
                 echo 'Starting application...'
-                sh "docker compose up"
+                sh "docker-compose up --build"
             }
         }
     }

@@ -4,6 +4,7 @@ pipeline {
         stage('Stage: Build') {
             steps {
                 echo 'Starting Building application'
+                sh "chmod +x ./build.sh"
                 sh "./build.sh"
             }
         }

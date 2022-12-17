@@ -1,14 +1,14 @@
 version: "3.9"
 services:
   discovery-service:
-    build: ./discovery-service
+    build: /discovery-service
     ports:
       - "8761:8761"
     networks:
       - b2w-cloud
 
   gateway:
-    build: ./gateway
+    build: /gateway
     depends_on:
       discovery-service:
         condition: service_started
@@ -20,7 +20,7 @@ services:
       - b2w-cloud
 
   b2w-converter:
-    build: ./b2w-converter
+    build: /b2w-converter
     depends_on:
       gateway:
         condition: service_started

@@ -16,7 +16,6 @@ services:
       - "8085:8085"
     environment:
       - discovery-service-host=${THIS_HOST_ADRESS}
-      #      - discovery-service-host=host.docker.internal
     networks:
       - b2w-cloud
 
@@ -29,7 +28,6 @@ services:
       - "8088:8088"
     environment:
       - discovery-service-host=${THIS_HOST_ADRESS}
-#      - discovery-service-host=host.docker.internal
     networks:
       - b2w-cloud
 

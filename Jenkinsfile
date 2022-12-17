@@ -10,10 +10,9 @@ pipeline {
         }
          stage('Stage: Build services') {
                     steps {
-                        sh "docker build . -f gateway/Dockerfile gateway"
-                        sh "docker build . -f discovery-service/Dockerfile discovery-service"
-                        sh "docker build . -f b2w-converter/Dockerfile b2w-converter"
-                        sh "./build.sh"
+                        sh "docker build -f gateway/Dockerfile -t gateway"
+                        sh "docker build -f discovery-service/Dockerfile -t discovery-service"
+                        sh "docker build -f b2w-converter/Dockerfile -t b2w-converter"
                     }
                 }
         stage('Stage: Stopping docker containers') {

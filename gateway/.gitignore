@@ -1,6 +1,6 @@
 HELP.md
 .gradle
-!**/src/main/**/build/libs/*-plan.jar
+!**/src/main/**/build/libs/*-plain.jar
 !**/src/main/**/build/classes
 !**/src/main/**/build/kotlin
 !**/src/main/**/build/tmp

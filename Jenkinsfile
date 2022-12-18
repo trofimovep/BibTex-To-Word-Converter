@@ -2,7 +2,6 @@ pipeline {
     agent any
     stages {
         stage('Gradle Build') {
-            agent any
             steps {
                 echo 'Starting Building application'
                 sh 'chmod +x -R .'

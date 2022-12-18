@@ -9,7 +9,7 @@ pipeline {
 //                 sh './discovery-service/gradlew -p discovery-service clean build'
 //                 sh './gateway/gradlew -p gateway clean build'
 //                 sh './b2w-converter/gradlew -p b2w-converter clean build'
-                sh "./build.sh"
+                sh "sudo ./build.sh"
             }
         }
         }

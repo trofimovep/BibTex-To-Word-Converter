@@ -1,33 +1,28 @@
 pipeline {
-    agent any 
     stages {
-        stage('Stage: Gradle Build') {
-            agent any
+        stage('Gradle Build') {
             steps {
                 echo 'Starting Building application'
-                sh 'chmod +x ./build.sh'
+//                 sh 'chmod +x ./build.sh'
                 sh './discovery-service/gradlew -p discovery-service clean build'
                 sh './gateway/gradlew -p gateway clean build'
                 sh './b2w-converter/gradlew -p b2w-converter clean build'
 //                 sh "./build.sh"
             }
         }
-        stage('Stage: Get info') {
-            agent any
+        stage('Get info') {
             steps {
                 echo 'docker compose ps'
                 echo 'docker ps'
             }
         }
-        stage('Stage: Stopping docker containers') {
-            agent any
+        stage('Stopping docker containers') {
             steps {
                 echo 'Stopping application...'
                 sh "docker compose down"
             }
         }
-        stage('Stage: Starting containers') {
-            agent any
+        stage('Starting containers') {
             steps {
                 echo 'Starting application...'
                 sh "docker compose build"

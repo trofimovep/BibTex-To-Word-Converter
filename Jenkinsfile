@@ -12,24 +12,24 @@ pipeline {
             }
         }
         }
-//         stage('Get info') {
-//             steps {
-//                 echo 'docker compose ps'
-//                 echo 'docker ps'
-//             }
-//         }
-//         stage('Stopping docker containers') {
-//             steps {
-//                 echo 'Stopping application...'
-//                 sh "docker compose down"
-//             }
-//         }
-//         stage('Starting containers') {
-//             steps {
-//                 echo 'Starting application...'
-//                 sh "docker compose build"
-//                 sh "docker compose up -d"
-//             }
-//         }
-//     }
+        stage('Get info') {
+            steps {
+                echo 'docker compose ps'
+                echo 'docker ps'
+            }
+        }
+        stage('Stopping docker containers') {
+            steps {
+                echo 'Stopping application...'
+                sh "docker compose down"
+            }
+        }
+        stage('Starting containers') {
+            steps {
+                echo 'Starting application...'
+                sh "docker compose build"
+                sh "docker compose up -d"
+            }
+        }
+    }
 }

@@ -5,8 +5,11 @@ pipeline {
             agent any
             steps {
                 echo 'Starting Building application'
-                sh "chmod +x ./build.sh"
-                sh "./build.sh"
+                sh 'chmod +x ./build.sh'
+                sh './discovery-service/gradlew -p discovery-service clean build'
+                sh './gateway/gradlew -p gateway clean build'
+                sh './b2w-converter/gradlew -p b2w-converter clean build'
+//                 sh "./build.sh"
             }
         }
         stage('Stage: Get info') {

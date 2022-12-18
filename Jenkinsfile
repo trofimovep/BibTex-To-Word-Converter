@@ -11,6 +11,7 @@ pipeline {
 //                 sh "./build.sh"
             }
         }
+        }
 //         stage('Get info') {
 //             steps {
 //                 echo 'docker compose ps'

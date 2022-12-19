@@ -4,7 +4,7 @@ pipeline {
         stage('Gradle Build') {
             steps {
                 echo 'Starting Building services'
-                sh 'chmod +x -R .'
+                sh 'chmod +x build.sh'
 //                 sh './discovery-service/gradlew -p discovery-service clean build'
 //                 sh './gateway/gradlew -p gateway clean build'
 //                 sh './b2w-converter/gradlew -p b2w-converter clean build'

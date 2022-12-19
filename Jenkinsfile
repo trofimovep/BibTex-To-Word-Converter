@@ -21,13 +21,13 @@ pipeline {
         stage('Stopping docker containers') {
             steps {
                 echo 'Stopping application...'
-                sh "docker compose down"
+                sh "sudo docker compose down"
             }
         }
         stage('Starting containers') {
             steps {
                 echo 'Starting application...'
-                sh "docker compose up -d"
+                sh "sudo docker compose up -d"
             }
         }
     }

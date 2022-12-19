@@ -27,7 +27,6 @@ pipeline {
         stage('Starting containers') {
             steps {
                 echo 'Starting application...'
-                sh "docker compose build"
                 sh "docker compose up -d"
             }
         }

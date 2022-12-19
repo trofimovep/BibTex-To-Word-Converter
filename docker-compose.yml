@@ -15,7 +15,8 @@ services:
     ports:
       - "8085:8085"
     environment:
-      - discovery-service-host=${THIS_HOST_ADRESS:95.217.219.129}
+      - discovery-service-host=95.217.219.129
+#      - discovery-service-host=${THIS_HOST_ADRESS:95.217.219.129}
     networks:
       - b2w-cloud
 
@@ -27,7 +28,7 @@ services:
     ports:
       - "8088:8088"
     environment:
-      - discovery-service-host=${THIS_HOST_ADRESS:95.217.219.129}
+      - discovery-service-host=95.217.219.129
     networks:
       - b2w-cloud
 

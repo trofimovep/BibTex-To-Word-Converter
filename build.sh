@@ -2,7 +2,7 @@
 echo "......................................................"
 
 echo "Starting building the discovery service application..."
-#./discovery-service/gradlew -p discovery-service clean build
+./discovery-service/gradlew -p discovery-service clean build
 echo "Discovery service application is built!"
 
 echo "Starting building the gateway application..."

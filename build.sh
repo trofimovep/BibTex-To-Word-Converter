@@ -13,4 +13,8 @@ echo "Starting building the converter application..."
 ./b2w-converter/gradlew -p b2w-converter clean build
 echo "Converter service application is built!"
 
+echo "Starting building the notification service application..."
+./notification-service/gradlew -p notification-service clean build
+echo "Notification service application is built!"
+
 echo "......................................................"

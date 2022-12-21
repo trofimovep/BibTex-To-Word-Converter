@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: notification-service
+  kafka:
+    bootstrap-servers: ${kafka-bootstrap-server:95.217.219.129}:9092
+  cloud:
+    stream:
+      kafka:
+        binder:
+          consumer-properties:
+            max.poll.records: 50
+      bindings:
+        input:
+          group: notification-service
+          destination: ${kakfka-notification-input-topisc:notification-topic}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${discovery-service-host:95.217.219.129}:8761/eureka
+#      defaultZone: http://${discovery-service-host:localhost}:8761/eureka

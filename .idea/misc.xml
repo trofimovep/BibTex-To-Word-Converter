@@ -5,6 +5,7 @@
     <file type="web" url="file://$PROJECT_DIR$/b2w-converter" />
     <file type="web" url="file://$PROJECT_DIR$/discovery-service" />
     <file type="web" url="file://$PROJECT_DIR$/gateway" />
+    <file type="web" url="file://$PROJECT_DIR$/notification-service" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

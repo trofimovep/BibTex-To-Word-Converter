@@ -9,50 +9,24 @@ services:
     ports:
       - "2181:2181"
     environment:
-      ALLOW_ANONYMOUS_LOGIN: yes
-    networks:
-      - kafkazoo
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
 
   kafka:
     image: wurstmeister/kafka
     container_name: kafka
+    volumes:
+      - ${PWD}/kafka/data:/var/lib/zookeeper/data
+      - ${PWD}/kafka:/var/lib/zookeeper/log
     ports:
       - "9092:9092"
+    depends_on:
+      - zookeeper
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_LISTENERS: PLAINTEXT_HOST://localhost:9092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT_HOST://localhost:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENERS: INTERNAL://kafka:9090,EXTERNAL://:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9090,EXTERNAL://95.217.219.129:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
 
-#      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-#      KAFKA_LISTENERS: PLAINTEXT://localhost:9092
-#      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-#      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-#      KAFKA_LOG_CLEANER_DELETE_RETENTION_MS: 5000
-#      KAFKA_BROKER_ID: 1
-#      KAFKA_MIN_INSYNC_REPLICAS: 1
-#      BOOTSTRAP_SERVERS: 'host.docker.internal:9092'
-#      KAFKA_ADVERTISED_HOST_NAME: kafka
-#      ALLOW_PLAINTEXT_LISTENER: yes
-
-
-
-    #      KAFKA_BROKER_ID: 1
-#      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-#      KAFKA_LISTENERS: PLAINTEXT://localhost:9092
-#      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-#      ALLOW_PLAINTEXT_LISTENER: yes
-
-
-    networks:
-      - kafkazoo
-networks:
-  kafkazoo:
-    driver: bridge
-
-#  kafka-topics.sh --bootstrap-server localhost:9092 --list
-#  kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test3
